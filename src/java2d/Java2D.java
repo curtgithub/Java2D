@@ -16,7 +16,7 @@ public class Java2D {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("Java2D.main\n");
+        System.out.println("Java2D.main run...\n");
     }
     
 }
