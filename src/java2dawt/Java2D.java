@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package java2d;
+package java2dawt;
 
-import java2d.examples.DrawingArbitraryShapes;
+import java2dawt.examples.DrawingArbitraryShapes;
 
 /**
  *

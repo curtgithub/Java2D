@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package geom;
+package java2dawt.examples;
 
+import geom.Ellipse;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -14,6 +15,8 @@ import java.awt.RenderingHints;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.geom.Ellipse2D;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JApplet;
 import javax.swing.JFrame;
 
@@ -22,13 +25,11 @@ import javax.swing.JFrame;
  * @author owner
  */
 public class DrawEllipse extends JApplet {
-   
+
    final static int JRAME_WIDTH = 1024;
-   final static int JRAME_HEIGHT = 1024;   
-   final static Dimension JFRAME_DIMENSION = new Dimension(JRAME_WIDTH, JRAME_HEIGHT);
+   final static int JRAME_HEIGHT = 1024;
 
    final static float STROKE_WIDTH = 2.0f;
-   final static BasicStroke STROKE = new BasicStroke(STROKE_WIDTH);
 
    @Override
    public void init() {
@@ -43,26 +44,24 @@ public class DrawEllipse extends JApplet {
       // ?Setup Rendering Hints?
       //
       Graphics2D g2 = (Graphics2D) g;
-      g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+      g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+              RenderingHints.VALUE_ANTIALIAS_ON);
 
       Dimension d = getSize();
-      int gridWidth = d.width;
-      int gridHeight = d.height;
       
-      int rectWidth = gridWidth / 2;
-      int rectHeight = gridHeight / 2;
-      
-      double x = gridWidth / 2;
-      double y = gridHeight / 2;
-
-      //
-      // IMPORTANT: Create/Draw The Ellipse
-      //
-      g2.setStroke(STROKE);
-      g2.draw(new Ellipse2D.Double(x, y, rectWidth, rectHeight));
-      //g2.drawString("Ellipse2D", x, stringY);
-      //x += gridWidth;
-
+      g2.setBackground(Color.WHITE);
+      Ellipse ellipse = new Ellipse();
+      try {
+         ellipse.setWidth(d.width);
+         ellipse.setHeight(d.height/2);
+      } catch (Exception ex) {
+         Logger.getLogger(DrawEllipse.class.getName()).log(Level.SEVERE,
+                 "Ellipse must have a greater than 0 semi-major and minor values.", ex);
+      }
+      g2.draw(new Ellipse2D.Double(0, 0,
+              ellipse.getWidth(),
+              ellipse.getHeight()));
+     
    }
 
    public static void main(String[] args) {
