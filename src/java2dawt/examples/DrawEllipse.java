@@ -6,7 +6,6 @@
 package java2dawt.examples;
 
 import geom.Ellipse;
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
